@@ -1,6 +1,19 @@
-# MyApp
+# Todo_app_Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+- Use Angular Material and Bootstrap for styling and UI components.
+
+# Getting Started
+```bash
+npm install -g @angular/cli
+ng new my-app
+cd my-app
+ng add @angular/material
+npm install bootstrap
+ng add @angular/fire
+
+```
+
 
 ## Development server
 
@@ -19,6 +32,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
+- Automatic test simulate real user interactions with the application.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
