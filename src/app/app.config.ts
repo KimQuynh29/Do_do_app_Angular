@@ -6,6 +6,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { getApp } from 'firebase/app';
+import { initializeFirestore } from 'firebase/firestore';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideAnimationsAsync(),
@@ -17,6 +19,12 @@ export const appConfig: ApplicationConfig = {
       "messagingSenderId": "776063723981",
       "appId": "1:776063723981:web:9a735858b1c46a7c25fc84"
     })),
-    provideFirestore(() => getFirestore()),
+    // Initialize Firestore with long-polling options to avoid gRPC transport errors
+    provideFirestore(() => {
+      const app = getApp();
+      return initializeFirestore(app, {
+        experimentalForceLongPolling: true,
+      });
+    }),
     provideNativeDateAdapter()]
 };

@@ -19,7 +19,7 @@ import { TodoService } from '../../services/todo.service';
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
 })
-export class TodoListComponent {
+class TodoListComponent {
   private todoService = inject(TodoService);
 
   todoList: Todo[] = [];
@@ -35,7 +35,9 @@ export class TodoListComponent {
   }
 
   addNewTodo() {
-    this._bottomSheet.open(TodoCreateComponent);
+    this._bottomSheet.open(TodoCreateComponent),{
+      panelClass: 'todo-sheet',
+    };
   }
 
   markAsCompleted(item: Todo) {
@@ -73,3 +75,5 @@ export class TodoListComponent {
     })
   }
 }
+
+export default TodoListComponent

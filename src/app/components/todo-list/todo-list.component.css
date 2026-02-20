@@ -1,26 +1,61 @@
-.todo-item-container,
 .todo-list-container {
-  border-radius: 10px;
+  position: relative;              /* IMPORTANT: FAB bám theo panel */
+  width: 70%;
+  margin: 0 auto;
+  height: calc(100vh - 120px);     /* chừa chỗ cho header/title */
+  overflow: auto;
 }
 
+/* ===== Each todo item card ===== */
+.todo-item-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+/* Fix icon alignment (optional) */
+.todo-item-container mat-icon[role="button"] {
+  cursor: pointer;
+}
+
+/* Middle content should take remaining space to push delete to far right */
+.todo-item-container > .flex-grow-1 {
+  /* ensure this element actually grows inside the flex container */
+  flex: 1 1 auto;
+  min-width: 0; /* tránh overflow */
+}
+
+/* Ensure the delete button is always pushed to the far right as a fallback */
+.delete-btn {
+  margin-left: auto;
+}
+
+/* Title */
 .completed-todo {
   text-decoration: line-through;
-}
-
-.todo-list-container {
-  height: calc(100vh - 70px);
-  overflow: auto;
+  opacity: 0.7;
 }
 
 .add-todo-button {
   position: absolute;
-  bottom: 30px;
+  bottom: 35px;
   right: 45px;
 }
 
-::ng-deep .mat-bottom-sheet-container-large,
-::ng-deep .mat-bottom-sheet-container-xlarge,
-::ng-deep .mat-bottom-sheet-container-medium {
+.todo-sheet {
+  width: 100% !important;
   min-width: 1320px !important;
-  width: 100%;
+  margin: 0 auto !important;
+}
+.delete-btn mat-icon {
+  color: #dc3545;
+}
+
+.todo-title{
+  font-weight: 500;
 }
